@@ -1,10 +1,12 @@
-// Order Status Enum
-export enum OrderStatus {
-  PENDING = 'pending',
-  IN_PROGRESS = 'inProgress',
-  COMPLETED = 'completed',
-  CANCELLED = 'cancelled',
-}
+// Order Status - Using const object instead of enum for better compatibility
+export const OrderStatus = {
+  PENDING: 'pending',
+  IN_PROGRESS: 'inProgress',
+  COMPLETED: 'completed',
+  CANCELLED: 'cancelled',
+} as const;
+
+export type OrderStatus = typeof OrderStatus[keyof typeof OrderStatus];
 
 // Order Item Interface
 export interface OrderItem {
@@ -27,3 +29,4 @@ export interface Order {
 
 // Filter type for order filtering
 export type OrderFilter = 'all' | 'pending' | 'inProgress' | 'completed';
+
