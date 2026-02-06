@@ -79,7 +79,11 @@ const FilterButton = styled.button<{ $isActive: boolean }>`
 
 const Count = styled.span<{ $isActive: boolean }>`
   background-color: ${({ $isActive, theme }) =>
-    $isActive ? 'rgba(255, 255, 255, 0.3)' : theme.colors.gray[200]};
+    $isActive
+      ? 'rgba(255, 255, 255, 0.3)'
+      : theme.mode === 'dark'
+        ? theme.colors.gray[700]
+        : theme.colors.gray[200]};
   color: ${({ $isActive, theme }) =>
     $isActive ? '#FFFFFF' : theme.colors.text.primary};
   padding: 2px 8px;
